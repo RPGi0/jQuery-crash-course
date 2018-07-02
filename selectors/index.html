@@ -1,0 +1,93 @@
+<!Doctype html>
+<html>
+<head>
+  <title>jQuery Crash Course | Selectors</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <style>
+    body {
+    font-size: 17px;
+    font-family: Arial;
+    background: #f4f4f4;
+    line-height: 1.5em;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 4px #000 solid;
+      margin-bottom: 10px
+    }
+    #container {
+      width: 90%;
+      margin: auto;
+      padding: 10px;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>jQuery Crash Course</h1>
+  </header>
+  <div id="container">
+    <h1 id="heading1">Heading One</h1>
+    <p id="para1">Bacon ipsum dolor amet bacon salami flank brisket t-bone alcatra tenderloin bresaola biltong tongue sirloin leberkas corned beef porchetta. <span>Corned beef rump pig</span>, strip steak bresaola chicken beef ham hock porchetta. Shank venison kielbasa prosciutto, jerky bacon frankfurter shoulder alcatra burgdoggen pork belly hamburger ribeye. Ham hock leberkas meatball tongue alcatra meatloaf.</p>
+
+    <h2 class="heading2">Heading Two</h2>
+    <p class="para2">Bacon ipsum dolor amet bacon salami flank brisket t-bone alcatra tenderloin bresaola biltong tongue sirloin leberkas corned beef porchetta. Corned beef rump pig, <span>strip steak bresaola chicken beef ham hock porchetta</span>. Shank venison kielbasa prosciutto, jerky bacon frankfurter shoulder alcatra burgdoggen pork belly hamburger ribeye. Ham hock leberkas meatball tongue alcatra meatloaf.</p>
+   
+    <ul id="list">
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+    </ul>
+
+    <input type="button" value="Button 1">
+    <input type="submit" value="Submit">
+    <input type="text">
+    <br> 
+    <a href="http://google.com">Google</a>
+    <a href="http://yahoo.com">Yahoo</a>
+  </div>
+
+  <!-- 
+    $ is short hand for jQuery 
+    ("") specifies element to target 
+  --> 
+  <script>
+    // .hide() method will hide previously specified element.
+    // $("h1").hide(); // hides all 'h1'elements.
+    // $("h1#heading1").hide(); // Hides only 'h1's with idName.
+    // $("h2.heading2").hide(); // Hides only 'h2's with className.
+    // $(".heading2").hide(); // affects all elements with className.
+
+    // .css() method applies CSS to specified elements. It accepts an attribute and a value as args.
+    // $("span").css("color", "red"); // affects all <span> elements
+    $("p span").css("color", "red"); // affects only <span>'s inside <p>'s
+      
+    // Targeting list items
+    $("ul#list li:first").css("color", "red");
+    $("ul#list li:last").css("color", "white");
+    $("ul#list li:even").css("background-color", "#cccccc");
+    $("ul#list li:odd").css("background-color", "yellow");
+    $("ul#list li:nth-child(3n)").css("list-style", "none");
+
+    // Using attributes to target 
+    // $(":button").hide(); 
+    // $(":submit").hide();
+    $(":text").hide();
+    $("[href]").css("color", "red");
+    $("a[href='http://yahoo.com']").css("color", "green");
+    // $("*").hide() // * indicates universal selection :: selects ALL elements
+  </script>
+</body>
+</html>
