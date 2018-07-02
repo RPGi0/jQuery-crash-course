@@ -34,10 +34,26 @@
     <button id="btn1" class="btnClass">Button 1</button>
     <button id="btn2">Button 2</button>
     <p class="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam vitae doloremque, eaque at quia alias officia nam sapiente, tenetur nostrum minus sequi aperiam veritatis non assumenda repudiandae deleniti? Dolore, ex.</p>
-    <h1 id="coords"></h1>
+    <hr>
+    <form id="form">
+      <label>Name</label><br>
+      <input type="text" id="name" name="name">
+      <br>
+      <label>Email</label><br>
+      <input type="text" id="email" name="email">
+      <br>
+      <label>Gender</label><br>
+      <select name="gender" id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="gender-fluid">Gender Fluid</option>
+      </select>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
   </div>
 
-  <script>
+  <script id="mouseEvents">
     // use $(document).ready() to keep page from trying to target #btn1 before the element is loaded:
     $(document).ready(function(){ 
       /* 
@@ -122,6 +138,48 @@
       });
     });
   </script>
+
+  <script id="formEvents">
+    $(document).ready(function(){
+        /*
+      $("input").focus(function(){
+        // alert("Focus");
+        // 'this' replaces 'input#name' :: It represents the current UI element 
+        $(this).css("background", "pink");
+      });
+
+        $("input").blur(function(){
+          $(this).css("background", "white");
+        });
+
+        // This logs everytime a key is pressed:
+        $("input").keyup(function(){
+          console.log("keyup")
+        });
+
+        //This logs the keystroke data value:
+        $("input").keyup(function(e){
+          console.log(e.target.value);
+        });
+        */
+        // Alert when select field is changed:
+        $("select#gender").change(function(){
+          alert("Changed");
+        });
+        // Alert with changed data: 
+        $("select#gender").change(function(e){
+          alert(e.target.value);
+        });
+        
+        // 
+        $("#form").submit(function(e){
+          e.preventDefault(); // Stops form from submiting to collect data
+          var name = $("input#name").val(); // variable to store collected data
+          console.log(name); // log the value of the collected data
+        });
+    });
+  </script>
+
 
 </body>
 </html>
