@@ -31,21 +31,94 @@
   </header>
   <div id="container">
     <h3>Mouse Events</h3>
-    <button id="btn1">Button 1</button>
+    <button id="btn1" class="btnClass">Button 1</button>
     <button id="btn2">Button 2</button>
+    <p class="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam vitae doloremque, eaque at quia alias officia nam sapiente, tenetur nostrum minus sequi aperiam veritatis non assumenda repudiandae deleniti? Dolore, ex.</p>
+    <h1 id="coords"></h1>
   </div>
 
   <script>
-    
-    $(document).ready(function(){ // use $(document).ready() to keep page from trying to target #btn1 before the element is loaded.
-    /*
+    // use $(document).ready() to keep page from trying to target #btn1 before the element is loaded:
+    $(document).ready(function(){ 
+      /* 
       $("#btn1").click(function(){
         alert("Button Clicked!")
       }); 
-    */
-      // This code does the same things as the code above
+
+      // This code does the same things as the code above:
       $("#btn1").on("click", function(){
         alert("Button clicked!")
+      }); 
+
+      // Clicking btn1 hides para1 text, clicking btn2 shows para1 text:
+      $("#btn1").on("click", function(){
+        $(".para1").hide();
+      });      
+      $("#btn2").on("click", function(){
+        $(".para1").show();
+      }); 
+
+      // Toggle text visibility with single button
+      $("btn1").on("click", function(){
+        $(para1).toggle();
+      }); 
+      
+      $("#btn2").dblclick(function(){
+        $(".para1").toggle();
+      }); 
+      */
+      
+      /* 
+      $("#btn1").hover(function(){
+        $(".para1").toggle();
+      });
+      // This method doesn't work because 'hover' is shorthand for two methods: mouseenter and mouseleave
+      $("#btn1").on("hover", function(){
+        $(".para1").toggle();
+      });
+      // instead of .on() the extended syntax for hover would look like this:
+      $("#btn1").on("mouseenter", function(){
+        $(".para1").toggle();
+      });
+      $("#btn1").on("mouseleave", function(){
+        $(".para1").toggle();
+      }); 
+      */
+
+      /*
+      $("#btn1").on("mousemove", function(){
+        $(".para1").toggle();
+      });
+      
+      // When mouse is clicked down, text is toggled (in this case, out)
+      $("#btn1").on("mousedown", function(){
+        $(".para1").toggle();
+      }); 
+      // When mouse click is released, text is toggled again (this case, in)
+      $("#btn1").on("mouseup", function(){
+        $(".para1").toggle();
+      }); 
+      */ 
+
+      $("#btn1").click(function(e){
+        // alert(e.currentTarget.id);
+        // alert(e.currentTarget.innerHTML); // returns whatever is inside the html tag
+        // alert(e.currentTarget.outerHTML); // returns html tag plus contents
+        // alert(e.currentTarget.className);
+      });
+      
+      /*
+      // Log coordinates of the mouse when hovering over btn1
+      $("#btn1").on("mousemove", function(e){
+        console.log("Coords: Y: " +e.clientY+ "X: " +e.clientX );
+      });
+      // Log coordinates of the mouse when hovering anywhere in the document
+      $(document).on("mousemove", function(e){
+        console.log("Coords: Y: " +e.clientY+ "X: " +e.clientX );
+      });
+      */
+      $(document).on("mousemove", function(e){
+        $("#coords").html("Coords: Y: " +e.clientY+ "X: " +e.clientX );
       });
     });
   </script>
